@@ -1,59 +1,45 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:kitaphana/pages/LoginPage.dart';
 import 'package:kitaphana/pages/MainPage.dart';
 import 'package:kitaphana/services/auth_service.dart';
 
-class RegistrationPage extends StatefulWidget {
-  const RegistrationPage({super.key});
+class Loginpage extends StatefulWidget {
+  const Loginpage({super.key});
 
   @override
-  State<RegistrationPage> createState() => _RegistrationPageState();
-  
+  State<Loginpage> createState() => _LoginpageState();
 }
 
-class _RegistrationPageState extends State<RegistrationPage> {
-
+class _LoginpageState extends State<Loginpage> {
   TextEditingController MailController = TextEditingController();
   TextEditingController PasswordController = TextEditingController();
 
   String errorMessage = '';
 
-  @override
-  void dispose(){
-    MailController.dispose();
-    PasswordController.dispose();
-    super.dispose();
-  }
 
-  void register() async{
+  void login() async {
     try {
-      await authService.value.createAccount(
-      email: MailController.text, 
-      password: PasswordController.text);
-      next();
-    } on FirebaseAuthException catch (e) {
+      await authService.value.signIn(
+        email: MailController.text, 
+        password: PasswordController.text);
+        next();
+    }on FirebaseAuthException catch (e) {
       setState(() {
         errorMessage = e.message ?? "There is an error";
       });
     }
   }
+
   void next(){
     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Mainpage()));
   }
-  void popPage(){
-    Navigator.pop(context);
-  }
-   
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            TextFormField(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TextFormField(
               decoration: InputDecoration(
                 prefix: Icon(Icons.person),
                 label: Text("Write Your Mail"),
@@ -75,23 +61,16 @@ class _RegistrationPageState extends State<RegistrationPage> {
               controller: PasswordController,
               obscureText: true,
             ),
+            SizedBox(height: 10.0,),
             Text(errorMessage, style: TextStyle(color: Colors.red),),
-            SizedBox(height: 10.0,),
-            GestureDetector(
-              onTap: (){
-                Navigator.push(context, MaterialPageRoute(builder: (context)=> Loginpage()));
-              },
-              child: Text('Login Page')),
-            SizedBox(height: 10.0,),
             SizedBox(
               child: ElevatedButton(onPressed: (){
-                register();
+                login();
               }, 
-              child: Text("Register"),),
+              child: Text("Login"),),
               
             ),
-          ],
-        ),
+        ],
       ),
     );
   }

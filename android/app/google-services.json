@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "138768739642",
+    "project_id": "kitaphana-438c8",
+    "storage_bucket": "kitaphana-438c8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:138768739642:android:e29b73d8f357833e4b3403",
+        "android_client_info": {
+          "package_name": "com.example.kitaphana"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBERgtZZenfky5z7xh1yzPDsaZqit7R9yQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
