@@ -11,16 +11,14 @@ class Usernamepage extends StatefulWidget {
 }
 
 class _UsernamepageState extends State<Usernamepage> {
-
   TextEditingController UsernameController = TextEditingController();
 
-  Future <void> saveUsername(String  username) async{
+  Future<void> saveUsername(String username) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString('username', username);
   }
 
-
-  void Update() async{
+  void Update() async {
     try {
       await authService.value.UpdateUsername(username: UsernameController.text);
       await saveUsername(UsernameController.text);
@@ -31,28 +29,35 @@ class _UsernamepageState extends State<Usernamepage> {
     }
   }
 
-  void next(){
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Mainpage()));
+  void next() {
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => Mainpage()),
+    );
   }
 
-  void success(){
+  void success() {
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         behavior: SnackBarBehavior.floating,
-        content: Text("Gutlayan"))
+        content: Text("Gutlayan"),
+      ),
     );
   }
-  void failer(){
+
+  void failer() {
     ScaffoldMessenger.of(context).clearSnackBars();
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         behavior: SnackBarBehavior.floating,
-        content: Text("Bolmady"))
+        content: Text("Bolmady"),
+      ),
     );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,19 +67,22 @@ class _UsernamepageState extends State<Usernamepage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextFormField(
-                decoration: InputDecoration(
-                  prefix: Icon(Icons.person),
-                  label: Text("Write Your Username"),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10)
-                  ),
+              decoration: InputDecoration(
+                prefix: Icon(Icons.person),
+                label: Text("Write Your Username"),
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(10),
                 ),
-                controller: UsernameController,
-                obscureText: true,
               ),
-              ElevatedButton(onPressed: (){
+              controller: UsernameController,
+              obscureText: true,
+            ),
+            ElevatedButton(
+              onPressed: () {
                 Update();
-              }, child: Text("Update"))
+              },
+              child: Text("Update"),
+            ),
           ],
         ),
       ),

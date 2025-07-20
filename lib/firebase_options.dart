@@ -59,5 +59,4 @@ class DefaultFirebaseOptions {
     projectId: 'kitaphana-438c8',
     storageBucket: 'kitaphana-438c8.firebasestorage.app',
   );
-
 }

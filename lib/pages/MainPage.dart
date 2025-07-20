@@ -11,19 +11,21 @@ class Mainpage extends StatefulWidget {
 class _MainpageState extends State<Mainpage> {
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       appBar: AppBar(
         actions: [
           GestureDetector(
-            onTap: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=> Adminpage()));
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Adminpage()),
+              );
             },
             child: Padding(
               padding: const EdgeInsets.all(10.0),
-              child: Icon(Icons.person, color: Colors.black,),
+              child: Icon(Icons.person, color: Colors.black),
             ),
-          )
+          ),
         ],
         automaticallyImplyLeading: false,
         title: Text("Main Page"),
@@ -31,9 +33,7 @@ class _MainpageState extends State<Mainpage> {
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text('Welcome')
-        ],
+        children: [Text('Welcome')],
       ),
       backgroundColor: Colors.white,
     );

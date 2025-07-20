@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:kitaphana/pages/MainPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:kitaphana/pages/Adminpage.dart';
 import 'package:kitaphana/pages/RegistrationPage.dart';
 
 class InitialPage extends StatefulWidget {
