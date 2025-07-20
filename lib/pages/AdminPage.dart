@@ -38,6 +38,7 @@ class _AdminpageState extends State<Adminpage> {
       ),
       body: Column(
         children: [
+          Text(authService.value.currentUser!.displayName ?? "Wepa"),
           ElevatedButton(onPressed: (){
             logout();
           }, child: Text("LogOut")),

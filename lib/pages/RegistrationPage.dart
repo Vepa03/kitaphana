@@ -1,8 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kitaphana/pages/LoginPage.dart';
-import 'package:kitaphana/pages/MainPage.dart';
+import 'package:kitaphana/pages/UserNamePage.dart';
 import 'package:kitaphana/services/auth_service.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({super.key});
@@ -16,8 +17,13 @@ class _RegistrationPageState extends State<RegistrationPage> {
 
   TextEditingController MailController = TextEditingController();
   TextEditingController PasswordController = TextEditingController();
-
   String errorMessage = '';
+
+
+  Future <void> saveEmail (String email) async{
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('saved mail', email);
+  }
 
   @override
   void dispose(){
@@ -31,6 +37,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
       await authService.value.createAccount(
       email: MailController.text, 
       password: PasswordController.text);
+      await saveEmail(MailController.text);
       next();
     } on FirebaseAuthException catch (e) {
       setState(() {
@@ -39,7 +46,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
     }
   }
   void next(){
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Mainpage()));
+    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Usernamepage()));
   }
   void popPage(){
     Navigator.pop(context);

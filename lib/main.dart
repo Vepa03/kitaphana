@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:kitaphana/pages/RegistrationPage.dart';
+import 'package:kitaphana/pages/InitialPage.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: RegistrationPage()
+      home: InitialPage()
     );
   }
 }
