@@ -34,7 +34,11 @@ class _LoginpageState extends State<Loginpage> {
   }
 
   void next(){
-    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context)=> Mainpage()));
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => Mainpage()),
+      (Route<dynamic> route) => false,
+    );
   }
   @override
   Widget build(BuildContext context) {

@@ -10,6 +10,8 @@ class AuthService {
 
   Stream<User?> get authStateChanges => firebaseAuth.authStateChanges();
 
+
+
   Future<UserCredential> signIn({
     required String email,
     required String password,
@@ -19,6 +21,8 @@ class AuthService {
       password: password,
     );
   }
+
+
 
   Future<UserCredential> createAccount({
     required String email,
@@ -30,17 +34,27 @@ class AuthService {
     );
   }
 
+
+
+
   Future<void> signOut() async {
     await firebaseAuth.signOut();
   }
+
+
 
   Future<void> resetPassword({required String email}) async {
     await firebaseAuth.sendPasswordResetEmail(email: email);
   }
 
+
+
   Future<void> UpdateUsername({required String username}) async {
     await currentUser!.updateDisplayName(username);
   }
+
+
+
 
   Future<void> deleteAccount({
     required String email,
@@ -54,6 +68,8 @@ class AuthService {
     await currentUser!.delete();
     await firebaseAuth.signOut();
   }
+
+
 
   Future<void> resetPasswordfromCurrentPasswoord({
     required String email,
