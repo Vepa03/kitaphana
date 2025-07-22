@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:kitaphana/pages/AboutUs.dart';
+import 'package:kitaphana/pages/DeleteAccountPage.dart';
 import 'package:kitaphana/pages/RegistrationPage.dart';
 import 'package:kitaphana/services/auth_service.dart';
 import 'package:lottie/lottie.dart';
@@ -14,6 +15,7 @@ class Adminpage extends StatefulWidget {
 
 class _AdminpageState extends State<Adminpage> {
   String errorMessage = '';
+
 
   void logout() async {
     try {
@@ -72,7 +74,7 @@ class _AdminpageState extends State<Adminpage> {
             width: MediaQuery.of(context).size.width*0.3,
             height: MediaQuery.of(context).size.height*0.05,
             child: ElevatedButton(onPressed: (){
-              
+              Navigator.push(context, MaterialPageRoute(builder: (context)=> Deleteaccountpage()));
             }, child: Text('Yes', style: TextStyle(fontSize: 20, color: Colors.white)),
               style: ElevatedButton.styleFrom(backgroundColor: Colors.red),),
           ),
@@ -89,6 +91,11 @@ class _AdminpageState extends State<Adminpage> {
       backgroundColor: Colors.white,
     ));
   }
+
+  
+
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -107,7 +114,7 @@ class _AdminpageState extends State<Adminpage> {
                   width: width,
                   height: height*0.3,
                   child: Lottie.asset("lib/assets/lottie/admin.json")),
-                Text("Username: ${authService.value.currentUser!.displayName }" ?? "No Username", style: TextStyle(fontSize: width*0.06),),
+                Text("Username: ${authService.value.currentUser!.displayName }", style: TextStyle(fontSize: width*0.06),),
                 SizedBox(height: 20.0,),
                 Divider(color: Colors.black12,),
                 Text("Settings", style: TextStyle(fontSize: width*0.07, fontWeight: FontWeight.bold),),
