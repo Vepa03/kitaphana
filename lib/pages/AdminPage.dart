@@ -104,7 +104,7 @@ class _AdminpageState extends State<Adminpage> {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(title: Text("Admin"), backgroundColor: Colors.amber),
+      appBar: AppBar(title: Text("Admin", style: TextStyle(fontSize: width*0.06, fontWeight: FontWeight.bold),), backgroundColor: Colors.white, elevation: 1, shadowColor: Colors.black,),
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -115,8 +115,8 @@ class _AdminpageState extends State<Adminpage> {
                 SizedBox(
                   width: width,
                   height: height*0.3,
-                  child: Lottie.asset("lib/assets/lottie/admin.json")),
-                Text("Username: ${authService.value.currentUser!.displayName }", style: TextStyle(fontSize: width*0.06),),
+                  child: Lottie.asset("lib/assets/lottie/profile.json")),
+                Text("${authService.value.currentUser!.displayName }", style: TextStyle(fontSize: width*0.06),),
                 SizedBox(height: 20.0,),
                 Divider(color: Colors.black12,),
                 Text("Settings", style: TextStyle(fontSize: width*0.07, fontWeight: FontWeight.bold),),
@@ -139,16 +139,18 @@ class _AdminpageState extends State<Adminpage> {
                   onTap: (){
                     delete_allert();
                   },
-                  trailing: Icon(Icons.arrow_forward_ios, color: Colors.black,),
+                  trailing: Icon(Icons.delete_outlined, color: Colors.black,),
                 ),
                 ListTile(
                   title: Text("About this app", style: TextStyle(color: Colors.black, fontSize: width*0.045),),
+                  trailing: Icon(Icons.info_outline, color: Colors.black,),
                   onTap: (){
                     Navigator.push(context, MaterialPageRoute(builder: (context)=> Aboutus()));
                   }
                 ),
                 ListTile(
                   title: Text("Logout", style: TextStyle(color: Colors.red, fontSize: width*0.045, fontWeight: FontWeight.bold),),
+                  trailing: Icon(Icons.logout, color: Colors.red,),
                   onTap: (){
                     logout_allert();
                   }

@@ -68,7 +68,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                     child: Lottie.asset("lib/assets/lottie/profile.json")),
                         TextFormField(
                           decoration: InputDecoration(
-                            label: Text("Enter your New Username"),
+                            label: Text("Enter your new username"),
                             prefix: Padding(
                               padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                               child: Icon(Icons.person, color: Colors.black,),

@@ -82,7 +82,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       child: Icon(Icons.person, color: Colors.black),
                     ),
                     label: Text(
-                      "Enter your Mail",
+                      "Enter your mail",
                       style: TextStyle(color: Colors.black),
                     ),
                     border: OutlineInputBorder(
@@ -99,7 +99,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       child: Icon(Icons.key, color: Colors.black),
                     ),
                     label: Text(
-                      "Enter Your Password",
+                      "Enter your password",
                       style: TextStyle(color: Colors.black),
                     ),
                     border: OutlineInputBorder(
@@ -129,7 +129,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
                       ),
                     ),
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.deepPurple,
+                      backgroundColor: const Color(0xFF673AB7),
                     ),
                   ),
                 ),

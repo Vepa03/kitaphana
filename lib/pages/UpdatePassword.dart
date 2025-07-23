@@ -103,7 +103,7 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                         SizedBox(height: 10.0,),
                         TextFormField(
                           decoration: InputDecoration(
-                            label: Text("Enter your Current Password"),
+                            label: Text("Enter your current password"),
                             prefix: Padding(
                               padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                               child: Icon(Icons.key, color: Colors.black,),
@@ -116,7 +116,7 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                           obscureText: true,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return "Current Passwrod is required";
+                              return "Current passwrod is required";
                             }
                             return null;
                           },
@@ -124,7 +124,7 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                         SizedBox(height: 10.0,),
                         TextFormField(
                           decoration: InputDecoration(
-                            label: Text("Enter your new Password"),
+                            label: Text("Enter your new password"),
                             prefix: Padding(
                               padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                               child: Icon(Icons.key, color: Colors.black,),
@@ -137,7 +137,7 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                           obscureText: true,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
-                              return "New Password is required";
+                              return "New password is required";
                             }
                             return null;
                           },
@@ -150,7 +150,7 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                           if (_formkey.currentState!.validate()) {
                             update();
                           }
-                        }, child: Text('Update', style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),), 
+                        }, child: Text('Change', style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),), 
                           style: ElevatedButton.styleFrom(backgroundColor: Colors.green),),
                       ),
               

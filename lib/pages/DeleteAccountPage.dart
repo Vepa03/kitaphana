@@ -84,7 +84,7 @@ class _DeleteaccountpageState extends State<Deleteaccountpage> {
                       SizedBox(height: 10.0,),
                       TextFormField(
                         decoration: InputDecoration(
-                          label: Text("Enter your Password"),
+                          label: Text("Enter your password"),
                           prefix: Padding(
                             padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                             child: Icon(Icons.key, color: Colors.black),

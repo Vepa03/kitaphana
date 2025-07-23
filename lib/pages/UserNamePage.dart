@@ -89,7 +89,7 @@ class _UsernamepageState extends State<Usernamepage> {
                         padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                         child: Icon(Icons.person, color: Colors.black,),
                       ),
-                      label: Text("Write Your Username"),
+                      label: Text("Write your username"),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10),
                       ),

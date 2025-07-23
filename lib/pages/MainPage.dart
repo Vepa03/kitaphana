@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:kitaphana/pages/AdminPage.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // --- MODEL SINIFLARI ---
@@ -114,8 +115,21 @@ class _MainpageState extends State<Mainpage> with TickerProviderStateMixin {
 
         return Scaffold(
           appBar: AppBar(
+            actions: [
+              GestureDetector(
+                onTap: (){
+                  Navigator.push(context, MaterialPageRoute(builder: (context)=> Adminpage()));
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Icon(Icons.person, color: Colors.black,),
+                ),
+              )
+            ],
             title: const Text('Yazarlar'),
-            backgroundColor: Colors.amber,
+            backgroundColor: Colors.white,
+            elevation: 1,
+            shadowColor: Colors.black,
             bottom: TabBar(
               controller: tabController,
               isScrollable: true,
