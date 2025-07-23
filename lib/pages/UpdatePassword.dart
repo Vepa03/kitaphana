@@ -113,6 +113,7 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                             ),
                           ),
                           controller: CurrentController,
+                          obscureText: true,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return "Current Passwrod is required";
@@ -133,6 +134,7 @@ class _UpdatePasswordState extends State<UpdatePassword> {
                             ),
                           ),
                           controller: NewController,
+                          obscureText: true,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return "New Password is required";

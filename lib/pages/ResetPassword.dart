@@ -65,7 +65,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                   SizedBox(
                     width: width,
                     height: height*0.3,
-                    child: Lottie.asset("lib/assets/lottie/updatepassword.json")),
+                    child: Lottie.asset("lib/assets/lottie/profile.json")),
                         TextFormField(
                           decoration: InputDecoration(
                             label: Text("Enter your New Username"),
