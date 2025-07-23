@@ -1,0 +1,164 @@
+import 'package:flutter/material.dart';
+import 'package:kitaphana/pages/MainPage.dart';
+import 'package:kitaphana/services/auth_service.dart';
+import 'package:lottie/lottie.dart';
+
+class UpdatePassword extends StatefulWidget {
+  const UpdatePassword({super.key});
+
+  @override
+  State<UpdatePassword> createState() => _UpdatePasswordState();
+}
+
+class _UpdatePasswordState extends State<UpdatePassword> {
+  
+  TextEditingController MailController = TextEditingController();
+  TextEditingController CurrentController = TextEditingController();
+  TextEditingController NewController = TextEditingController();
+
+  final _formkey = GlobalKey<FormState>();
+
+  void update() async {
+    try {
+      await authService.value.resetPasswordfromCurrentPasswoord(
+        email: MailController.text, 
+        currentPassword: CurrentController.text, 
+        newPassword: NewController.text);
+        success();
+        next();
+    } catch (e) {
+      failer();
+    }
+  }
+
+  void next(){
+    Navigator.pushAndRemoveUntil(
+      context,
+      MaterialPageRoute(builder: (context) => Mainpage()),
+      (Route<dynamic> route) => false,
+    );
+  }
+
+  void success() {
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        behavior: SnackBarBehavior.floating,
+        content: Text("Your Username is changed"),
+      ),
+    );
+  }
+  void failer() {
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        behavior: SnackBarBehavior.floating,
+        content: Text("Something went wrong"),
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    var width = MediaQuery.of(context).size.width;
+    var height = MediaQuery.of(context).size.height;
+    return Scaffold(
+      appBar: AppBar(backgroundColor: Colors.white,),
+      body: SafeArea(
+        child: SingleChildScrollView(
+          scrollDirection: Axis.vertical,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Form(
+              key: _formkey,
+              child: Column(
+                children: [
+                  Text("Change Password", style: TextStyle(fontSize: width*0.07, color: Colors.black, fontWeight: FontWeight.bold),),
+                  SizedBox(height: 10.0,),
+                  SizedBox(
+                    width: width,
+                    height: height*0.3,
+                    child: Lottie.asset("lib/assets/lottie/updatepassword.json")),
+                        TextFormField(
+                          decoration: InputDecoration(
+                            label: Text("Enter your mail"),
+                            prefix: Padding(
+                              padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                              child: Icon(Icons.mail, color: Colors.black,),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                          ),
+                          controller: MailController,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "Mail is required";
+                            }
+                            return null;
+                          },
+                        ),
+                        SizedBox(height: 10.0,),
+                        TextFormField(
+                          decoration: InputDecoration(
+                            label: Text("Enter your Current Password"),
+                            prefix: Padding(
+                              padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                              child: Icon(Icons.key, color: Colors.black,),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                          ),
+                          controller: CurrentController,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "Current Passwrod is required";
+                            }
+                            return null;
+                          },
+                        ),
+                        SizedBox(height: 10.0,),
+                        TextFormField(
+                          decoration: InputDecoration(
+                            label: Text("Enter your new Password"),
+                            prefix: Padding(
+                              padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                              child: Icon(Icons.key, color: Colors.black,),
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(10.0),
+                            ),
+                          ),
+                          controller: NewController,
+                          validator: (value) {
+                            if (value == null || value.isEmpty) {
+                              return "New Password is required";
+                            }
+                            return null;
+                          },
+                        ),
+                        SizedBox(height: 10.0,),
+                        SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: MediaQuery.of(context).size.height*0.05,
+                        child: ElevatedButton(onPressed: (){
+                          if (_formkey.currentState!.validate()) {
+                            update();
+                          }
+                        }, child: Text('Update', style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),), 
+                          style: ElevatedButton.styleFrom(backgroundColor: Colors.green),),
+                      ),
+              
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
+      backgroundColor: Colors.white,
+    );
+  }
+}

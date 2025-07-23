@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kitaphana/pages/MainPage.dart';
+import 'package:kitaphana/pages/ResetPassword.dart';
 import 'package:kitaphana/services/auth_service.dart';
 import 'package:lottie/lottie.dart';
 import 'package:shared_preferences/shared_preferences.dart';

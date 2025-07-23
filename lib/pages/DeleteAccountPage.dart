@@ -46,7 +46,7 @@ class _DeleteaccountpageState extends State<Deleteaccountpage> {
     var height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.amber,),
+      appBar: AppBar(backgroundColor: Colors.white,),
       body:SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -57,6 +57,7 @@ class _DeleteaccountpageState extends State<Deleteaccountpage> {
               child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
+                      Text("Delete Account", style: TextStyle(fontSize: width*0.07, color: Colors.black, fontWeight: FontWeight.bold),),
                       SizedBox(
                         width: width,
                         height: height*0.3,
@@ -64,7 +65,10 @@ class _DeleteaccountpageState extends State<Deleteaccountpage> {
                       TextFormField(
                         decoration: InputDecoration(
                           label: Text("Enter your mail"),
-                          prefix: Icon(Icons.mail),
+                          prefix: Padding(
+                            padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                            child: Icon(Icons.mail, color: Colors.black,),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10.0),
                           ),
@@ -81,7 +85,10 @@ class _DeleteaccountpageState extends State<Deleteaccountpage> {
                       TextFormField(
                         decoration: InputDecoration(
                           label: Text("Enter your Password"),
-                          prefix: Icon(Icons.mail),
+                          prefix: Padding(
+                            padding: const EdgeInsets.only(left: 10.0, right: 10.0),
+                            child: Icon(Icons.key, color: Colors.black),
+                          ),
                           border: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(10),
                           ),

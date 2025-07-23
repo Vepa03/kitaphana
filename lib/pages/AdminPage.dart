@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:kitaphana/pages/AboutUs.dart';
 import 'package:kitaphana/pages/DeleteAccountPage.dart';
 import 'package:kitaphana/pages/RegistrationPage.dart';
+import 'package:kitaphana/pages/ResetPassword.dart';
+import 'package:kitaphana/pages/UpdatePassword.dart';
 import 'package:kitaphana/services/auth_service.dart';
 import 'package:lottie/lottie.dart';
 
@@ -121,19 +123,19 @@ class _AdminpageState extends State<Adminpage> {
                 ListTile(
                   title: Text("Update Username", style: TextStyle(color: Colors.black, fontSize: width*0.045),),
                   onTap: (){
-                
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> ResetPassword()));
                   },
                   trailing: Icon(Icons.arrow_forward_ios, color: Colors.black,),
                 ),
                 ListTile(
                   title: Text("Change Password", style: TextStyle(color: Colors.black, fontSize: width*0.045),),
                   onTap: (){
-                
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=> UpdatePassword()));
                   },
                   trailing: Icon(Icons.arrow_forward_ios, color: Colors.black,),
                 ),
                 ListTile(
-                  title: Text("Delet Account", style: TextStyle(color: Colors.black, fontSize: width*0.045),),
+                  title: Text("Delete Account", style: TextStyle(color: Colors.black, fontSize: width*0.045),),
                   onTap: (){
                     delete_allert();
                   },
