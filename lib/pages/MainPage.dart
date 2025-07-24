@@ -272,6 +272,7 @@ class PdfViewerPage extends StatelessWidget {
         canShowScrollStatus: true,
         canShowPaginationDialog: true,
       ),
+      backgroundColor: Colors.white,
     );
   }
 }
