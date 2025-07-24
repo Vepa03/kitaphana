@@ -64,7 +64,7 @@ class _LoginpageState extends State<Loginpage> {
                         padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                         child: Icon(Icons.person, color: Colors.black,),
                       ),
-                      label: Text("Enter Your Mail", style: TextStyle(color: Colors.black),),
+                      label: Text("Enter your mail", style: TextStyle(color: Colors.black),),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)
                       ),
@@ -78,7 +78,7 @@ class _LoginpageState extends State<Loginpage> {
                         padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                         child: Icon(Icons.key, color: Colors.black,),
                       ),
-                      label: Text("Enter Your Password", style: TextStyle(color: Colors.black)),
+                      label: Text("Enter your password", style: TextStyle(color: Colors.black)),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)
                       ),

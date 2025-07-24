@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:kitaphana/pages/AboutUs.dart';
 import 'package:kitaphana/pages/DeleteAccountPage.dart';
 import 'package:kitaphana/pages/RegistrationPage.dart';
@@ -104,7 +105,9 @@ class _AdminpageState extends State<Adminpage> {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(title: Text("Admin", style: TextStyle(fontSize: width*0.06, fontWeight: FontWeight.bold),), backgroundColor: Colors.white, elevation: 1, shadowColor: Colors.black,),
+      appBar: AppBar(iconTheme: IconThemeData(color: Colors.white),
+        title: Text("Admin", style:GoogleFonts.montserrat(textStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)), ), 
+        backgroundColor: Colors.indigo, elevation: 1, shadowColor: Colors.black,),
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,

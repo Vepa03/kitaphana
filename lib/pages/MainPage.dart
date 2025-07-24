@@ -2,7 +2,9 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:kitaphana/pages/AdminPage.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 // --- MODEL SINIFLARI ---
 
@@ -121,18 +123,21 @@ class _MainpageState extends State<Mainpage> with TickerProviderStateMixin {
                   Navigator.push(context, MaterialPageRoute(builder: (context)=> Adminpage()));
                 },
                 child: Padding(
-                  padding: const EdgeInsets.all(10.0),
-                  child: Icon(Icons.person, color: Colors.black,),
+                  padding: const EdgeInsets.all(15.0),
+                  child: Icon(Icons.person, color: Colors.white,),
                 ),
               )
             ],
-            title: const Text('Yazarlar'),
-            backgroundColor: Colors.white,
+            automaticallyImplyLeading: false,
+            title: Text('Library', style:GoogleFonts.montserrat(textStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w500))),
+            backgroundColor: Colors.indigo,
             elevation: 1,
             shadowColor: Colors.black,
             bottom: TabBar(
               controller: tabController,
               isScrollable: true,
+              labelColor: Colors.white,
+              unselectedLabelColor: Colors.white38,
               tabs: writers.map((writer) => Tab(text: writer.username)).toList(),
             ),
           ),
@@ -142,6 +147,7 @@ class _MainpageState extends State<Mainpage> with TickerProviderStateMixin {
               return WriterBooksTab(writerId: writer.id);
             }).toList(),
           ),
+          backgroundColor: Colors.white,
         );
       },
     );
@@ -160,15 +166,15 @@ class WriterBooksTab extends StatelessWidget {
 
   try {
     if (await canLaunchUrl(uri)) {
-      await launchUrl(uri, mode: LaunchMode.externalApplication);
+      await launchUrl(uri, mode: LaunchMode.externalApplication); // ya da LaunchMode.inAppWebView
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('PDF açılamadı. Lütfen daha sonra tekrar deneyin.')),
+        SnackBar(content: Text('PDF açılamadı. Bağlantı geçersiz.')),
       );
     }
   } catch (e) {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Hata: $e')),
+      SnackBar(content: Text('Hata oluştu: $e')),
     );
   }
 }
@@ -191,23 +197,81 @@ class WriterBooksTab extends StatelessWidget {
         }
 
         return ListView.builder(
-          itemCount: books.length,
-          itemBuilder: (context, index) {
-            final book = books[index];
-            return Card(
-              margin: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-              child: ListTile(
-                leading: Image.network(book.image, width: 50, height: 50, fit: BoxFit.cover),
-                title: Text(book.title),
-                trailing: Icon(Icons.picture_as_pdf),
-                onTap: () {
-                  openPdf(context, book.file);
-                },
+  itemCount: books.length,
+  itemBuilder: (context, index) {
+    final book = books[index];
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(12),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 6,
+            offset: Offset(0, 2),
+          ),
+        ],
+      ),
+      child: ListTile(
+        contentPadding: const EdgeInsets.all(12),
+        leading: ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: Image.network(
+            book.image,
+            width: 60,
+            height: 80,
+            fit: BoxFit.cover,
+          ),
+        ),
+        title: Text(
+          book.title,
+          style: TextStyle(
+            fontWeight: FontWeight.w600,
+            fontSize: 16,
+          ),
+        ),
+        trailing: IconButton(
+          icon: Icon(Icons.picture_as_pdf, color: Colors.redAccent),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => PdfViewerPage(
+                  title: book.title,
+                  pdfUrl: book.file,
+                ),
               ),
             );
           },
-        );
+        ),
+      ),
+    );
+  },
+);
       },
+    );
+  }
+}
+
+class PdfViewerPage extends StatelessWidget {
+  final String title;
+  final String pdfUrl;
+
+  const PdfViewerPage({required this.title, required this.pdfUrl, super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final secureUrl = pdfUrl.replaceFirst('http://', 'https://');
+
+    return Scaffold(
+      appBar: AppBar(title: Text(title, style: TextStyle(color: Colors.white),), backgroundColor: Colors.indigo, elevation: 1, shadowColor: Colors.black,
+      iconTheme: IconThemeData(color: Colors.white),),
+      body: SfPdfViewer.network(
+        secureUrl,
+        canShowScrollStatus: true,
+        canShowPaginationDialog: true,
+      ),
     );
   }
 }

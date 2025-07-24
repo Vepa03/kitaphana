@@ -45,7 +45,7 @@ class _UsernamepageState extends State<Usernamepage> {
       SnackBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         behavior: SnackBarBehavior.floating,
-        content: Text("Gutlayan"),
+        content: Text("Congratulation you succesfully registered !"),
       ),
     );
   }
@@ -58,7 +58,7 @@ class _UsernamepageState extends State<Usernamepage> {
       SnackBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         behavior: SnackBarBehavior.floating,
-        content: Text("Bolmady"),
+        content: Text("Someting  went wrong"),
       ),
     );
   }

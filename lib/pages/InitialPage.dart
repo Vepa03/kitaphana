@@ -41,8 +41,9 @@ class _InitialPageState extends State<InitialPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
-        child: CircularProgressIndicator(), // loading animasyonu
+        child: CircularProgressIndicator(), 
       ),
     );
   }
