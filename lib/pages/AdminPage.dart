@@ -107,6 +107,7 @@ class _AdminpageState extends State<Adminpage> {
     return Scaffold(
       appBar: AppBar(iconTheme: IconThemeData(color: Colors.white),
         title: Text("Admin", style:GoogleFonts.montserrat(textStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)), ), 
+        centerTitle: true,
         backgroundColor: Colors.indigo, elevation: 1, shadowColor: Colors.black,),
       body: SafeArea(
         child: SingleChildScrollView(

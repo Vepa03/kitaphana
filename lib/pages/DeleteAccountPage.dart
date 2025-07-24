@@ -46,7 +46,7 @@ class _DeleteaccountpageState extends State<Deleteaccountpage> {
     var height = MediaQuery.of(context).size.height;
 
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.white,),
+      appBar: AppBar(backgroundColor: Colors.indigo, iconTheme: IconThemeData(color: Colors.white),),
       body:SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,
@@ -112,7 +112,7 @@ class _DeleteaccountpageState extends State<Deleteaccountpage> {
                           if (_formkey.currentState!.validate()) {
                             deleteAccount();
                           }
-                        }, child: Text('Delete', style: TextStyle(fontSize: 20, color: Colors.white),), 
+                        }, child: Text('Delete', style: TextStyle(fontSize: 20, color: Colors.white, fontWeight: FontWeight.bold),), 
                           style: ElevatedButton.styleFrom(backgroundColor: Colors.red),),
                       ),
                     ],

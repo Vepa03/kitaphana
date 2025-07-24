@@ -65,7 +65,7 @@ class _UpdatePasswordState extends State<UpdatePassword> {
     var width = MediaQuery.of(context).size.width;
     var height = MediaQuery.of(context).size.height;
     return Scaffold(
-      appBar: AppBar(backgroundColor: Colors.white,),
+      appBar: AppBar(backgroundColor: Colors.indigo, iconTheme: IconThemeData(color: Colors.white),),
       body: SafeArea(
         child: SingleChildScrollView(
           scrollDirection: Axis.vertical,

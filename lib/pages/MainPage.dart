@@ -129,8 +129,9 @@ class _MainpageState extends State<Mainpage> with TickerProviderStateMixin {
               )
             ],
             automaticallyImplyLeading: false,
-            title: Text('Library', style:GoogleFonts.montserrat(textStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w500))),
+            title: Text('Library',style:GoogleFonts.montserrat(textStyle: TextStyle(color: Colors.white, fontWeight: FontWeight.w500))),
             backgroundColor: Colors.indigo,
+            centerTitle: true,
             elevation: 1,
             shadowColor: Colors.black,
             bottom: TabBar(
