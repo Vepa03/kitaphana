@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kitaphana/pages/LoginPage.dart';
 import 'package:kitaphana/services/auth_service.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Deleteaccountpage extends StatefulWidget {
   const Deleteaccountpage({super.key});
@@ -18,11 +19,17 @@ class _DeleteaccountpageState extends State<Deleteaccountpage> {
 
   String errorMessage = '';
 
+  Future<void> saveEmail(String email) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('saved mail', email);
+  }
+
   void deleteAccount() async{
     try {
       await authService.value.deleteAccount(
         email: MailController.text, 
         password: PasswordController.text);
+        await saveEmail(MailController.text);
       next();
     } on FirebaseAuthException catch (e) {
       setState(() {

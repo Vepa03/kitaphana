@@ -5,6 +5,7 @@ import 'package:kitaphana/pages/MainPage.dart';
 import 'package:kitaphana/pages/RegistrationPage.dart';
 import 'package:kitaphana/services/auth_service.dart';
 import 'package:lottie/lottie.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Loginpage extends StatefulWidget {
   const Loginpage({super.key});
@@ -19,12 +20,18 @@ class _LoginpageState extends State<Loginpage> {
 
   String errorMessage = '';
 
+  Future<void> saveEmail(String email) async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('saved mail', email);
+  }
+
 
   void login() async {
     try {
       await authService.value.signIn(
         email: MailController.text, 
         password: PasswordController.text);
+        await saveEmail(MailController.text);
         next();
     }on FirebaseAuthException catch (e) {
       setState(() {
