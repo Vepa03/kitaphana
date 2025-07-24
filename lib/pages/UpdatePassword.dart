@@ -45,7 +45,7 @@ class _UpdatePasswordState extends State<UpdatePassword> {
       SnackBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
         behavior: SnackBarBehavior.floating,
-        content: Text("Your Username is changed"),
+        content: Text("Your password is changed"),
       ),
     );
   }

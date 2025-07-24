@@ -61,7 +61,7 @@ class WriterService {
       List jsonList = json.decode(response.body);
       return jsonList.map((e) => Writer.fromJson(e)).toList();
     } else {
-      throw Exception('Yazarlar yüklenemedi');
+      throw Exception("Writers couldn't loaded");
     }
   }
 }
@@ -75,7 +75,7 @@ class BookService {
       List jsonList = json.decode(response.body);
       return jsonList.map((e) => Book.fromJson(e)).toList();
     } else {
-      throw Exception('Kitaplar yüklenemedi');
+      throw Exception("Books couldn't loaded");
     }
   }
 
@@ -170,12 +170,12 @@ class WriterBooksTab extends StatelessWidget {
       await launchUrl(uri, mode: LaunchMode.externalApplication); // ya da LaunchMode.inAppWebView
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text('PDF açılamadı. Bağlantı geçersiz.')),
+        SnackBar(content: Text('PDF could not opened. ')),
       );
     }
   } catch (e) {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('Hata oluştu: $e')),
+      SnackBar(content: Text('Something went wrong: $e')),
     );
   }
 }
@@ -189,12 +189,12 @@ class WriterBooksTab extends StatelessWidget {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());
         } else if (snapshot.hasError) {
-          return Center(child: Text('Hata oluştu: ${snapshot.error}'));
+          return Center(child: Text('Something went wrong: ${snapshot.error}'));
         }
 
         final books = snapshot.data!;
         if (books.isEmpty) {
-          return const Center(child: Text('Bu yazara ait kitap yok.'));
+          return const Center(child: Text('There is noo book'));
         }
 
         return ListView.builder(
