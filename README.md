@@ -1,17 +1,36 @@
-# kitaphana
+# 📚 Kitaphana App
 
-A new Flutter project.
+Kitaphana, Flutter kullanılarak geliştirilmiş bir kütüphane uygulamasıdır.  
+Firebase kimlik doğrulama, Django API üzerinden kitap verileri alma, PDF görüntüleme ve modern animasyonlar gibi özellikler içerir.  
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Özellikler
 
-A few resources to get you started if this is your first Flutter project:
+- 🔑 **Firebase Authentication** ile kullanıcı giriş/çıkış  
+- 📂 **Shared Preferences** ile kullanıcı verilerini saklama  
+- 🎬 **Lottie Animations** ile modern animasyon desteği  
+- 📖 **Syncfusion PDF Viewer** ile PDF kitap okuma  
+- 🌐 **HTTP & Dio** ile REST API üzerinden veri alma  
+- 🖼️ **Google Fonts** ile özel yazı tipleri  
+- 📱 **Android & iOS** desteği  
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# kitaphana
+## 🛠️ Kullanılan Teknolojiler
+
+- [Flutter](https://flutter.dev/)  
+- [Firebase Authentication](https://firebase.google.com/)  
+- [Dio](https://pub.dev/packages/dio)  
+- [Shared Preferences](https://pub.dev/packages/shared_preferences)  
+- [Syncfusion PDF Viewer](https://pub.dev/packages/syncfusion_flutter_pdfviewer)  
+- [Lottie](https://pub.dev/packages/lottie)  
+
+---
+
+## 📦 Kurulum
+
+1. Repoyu klonla:
+   ```bash
+   git clone https://github.com/kullanici-adi/kitaphana.git
+   cd kitaphana
